@@ -13,17 +13,17 @@ public class Humain {
 	}
 		
 	public String getNom() {
-		return nom;
+		return this.nom;
 	}
 
 	public String getBoisson() {
-		return boisson;
+		return this.boisson;
 	}
 	public void setBoisson(String boisson) {
 		this.boisson = boisson;
 	}
-	public float getArgent() {
-		return argent;
+	public int getArgent() {
+		return this.argent;
 	}
 	
 	public void gagnerArgent(float somme) {

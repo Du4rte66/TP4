@@ -11,12 +11,19 @@ public class HistoireTP4 {
 		prof.boire();
 		prof.acheter("jeu", 2);
 		prof.acheter("kimono", 50);
+		System.out.println();
+		
 		Commercant marco = new Commercant("Marco", 20);
 		marco.direBonjour();
 		marco.seFaireExtorquer();
 		marco.recevoir(15);
 		marco.boire();
-
+		System.out.println();
+		
+		Yakuza yaku = new Yakuza("Yaku Le Noir", "whisky", 30, "Les méchants");
+		yaku.direBonjour();
+		yaku.extorquer(marco);
+		
 	}
 
 }

@@ -7,13 +7,14 @@ public class Commercant extends Humain {
 	}
 	
 	public int seFaireExtorquer() {
-		super.perdreArgent(this.argent);
+		int vol = this.argent;
+		super.perdreArgent(vol);
 		this.parler("J'ai tout perdu ! Le monde est trop injuste...");
-		return this.argent;
+		return vol;
 	}
 	
 	public void recevoir(int argent) {
 		this.parler(argent + " sous ! Je te remercie généreux donateur !");
-		gagnerArgent(argent);
+		this.gagnerArgent(argent);
 	}
 }
