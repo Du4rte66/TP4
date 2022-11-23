@@ -17,20 +17,25 @@ public class Yakuza extends Humain {
 		return this.reputation;
 	}
 	
-	protected void gagner() {
+	protected void gagner(int gain) {
+		this.argent += gain;
 		this.reputation += 1;
+		this.parler("Ce ronin pensait vraiment battre " + this.nom + " du clan de " + this.clan + " ? Je l'ai dépouillé de ses " + gain + " sous.");
 	}
 	
-	protected void perdre() {
-		
+	protected int perdre() {
+		int perte = this.argent;
+		this.argent = 0;
 		this.reputation -= 1;
+		this.parler("J'ai perdu mon duel et mes " + perte + " sous, snif... J'ai déshonoré le clan de " + this.clan + ".");
+		return perte;
 	}
 	
 	public void extorquer(Commercant victime) {
 		this.parler("Tiens, tiens, ne serait-ce pas un faible marchand qui passe par là ?");
 		this.parler(victime.getNom() + ", si tu tiens à la vie donne moi ta bourse !");
 		int vol = victime.seFaireExtorquer();
-		this.gagner();
+		this.gagner(vol);
 		this.argent += vol;
 		this.parler("J'ai piqué les " + vol + " sous de " + victime.getNom() + " ce qui me fait " + this.argent + " sous dans ma poche. HI ! HI !");
 	}

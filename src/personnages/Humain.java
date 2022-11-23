@@ -1,7 +1,7 @@
 package personnages;
 
 public class Humain {
-	private String nom;
+	protected String nom;
 	private String boisson;
 	protected int argent;
 	
@@ -26,11 +26,11 @@ public class Humain {
 		return this.argent;
 	}
 	
-	public void gagnerArgent(float somme) {
+	public void gagnerArgent(int somme) {
 		this.argent += somme;
 	}
 	
-	public void perdreArgent(float somme) {
+	public void perdreArgent(int somme) {
 		this.argent -= somme;
 	}
 	
