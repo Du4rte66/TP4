@@ -22,6 +22,7 @@ public class Yakuza extends Humain {
 	}
 	
 	protected void perdre() {
+		
 		this.reputation -= 1;
 	}
 	
