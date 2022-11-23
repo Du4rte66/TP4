@@ -4,33 +4,32 @@ public class Humain {
 	protected String nom;
 	private String boisson;
 	protected int argent;
+	private Humain[] memoire = new Humain[30];
+	private int nbConnaissance = 0;
 	
 	public Humain(String nom, String boisson, int argent) {
-		super();
 		this.nom = nom;
 		this.boisson = boisson;
 		this.argent = argent;
 	}
 		
-	public String getNom() {
+	protected String getNom() {
 		return this.nom;
 	}
 
-	public String getBoisson() {
+	protected String getBoisson() {
 		return this.boisson;
 	}
-	public void setBoisson(String boisson) {
-		this.boisson = boisson;
-	}
-	public int getArgent() {
+
+	protected int getArgent() {
 		return this.argent;
 	}
 	
-	public void gagnerArgent(int somme) {
+	protected void gagnerArgent(int somme) {
 		this.argent += somme;
 	}
 	
-	public void perdreArgent(int somme) {
+	protected void perdreArgent(int somme) {
 		this.argent -= somme;
 	}
 	
@@ -58,5 +57,38 @@ public class Humain {
 		this.parler(texte + " m'offrir un " + bien + " à " + prix + " sous.");
 	}
 	
+	private void memoriser(Humain autreHumain) {
+		if (nbConnaissance >= 30) {
+			//supprime la plus vieille connaissance
+			for(int i = 0; i < 29; i++) {
+				this.memoire[i] = this.memoire[i+1];
+			}
+			this.nbConnaissance--;
+		}
+		this.memoire[nbConnaissance] = autreHumain;
+		this.nbConnaissance++;
+	}
 	
+	public void faireConnaissanceAvec(Humain autreHumain) {
+		this.direBonjour();
+		autreHumain.direBonjour();
+		this.memoriser(autreHumain);
+		autreHumain.memoriser(this);
+	}
+	
+	public void listerConnaissance() {
+		if (this.nbConnaissance > 0) {
+			StringBuilder bld = new StringBuilder();
+			bld.append("Je connais beaucoup de monde dont : " + this.memoire[0].getNom());
+			for(int i = 1; i < this.nbConnaissance; i++) {
+				bld.append( ", " + this.memoire[i].getNom());
+			}
+			bld.append(".");
+			String texte = bld.toString();
+			this.parler(texte);
+		}
+		else {
+			this.parler("Je ne connais personne :(");
+		}
+	}
 }

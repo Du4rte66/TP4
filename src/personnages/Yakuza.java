@@ -9,11 +9,11 @@ public class Yakuza extends Humain {
 		this.clan = clan;
 	}
 	
-	public String getClan() {
+	protected String getClan() {
 		return this.clan;
 	}
 
-	public int getReputation() {
+	protected int getReputation() {
 		return this.reputation;
 	}
 	
